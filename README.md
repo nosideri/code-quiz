@@ -12,7 +12,7 @@ A timed online JavaScript quiz for coding bootcamp students so they can gauge th
 https://nosideri.github.io/code-quiz/
 
 #### Preview
-
+http://prntscr.com/u8rof3
 
 ## Contribution
 Made with ❤️ by Madison
