@@ -1,7 +1,9 @@
-
+body {
+    font-family: Helvetica, Arial, sans-serif;
+}
 
 .button {
-    color: purple
+    color: purple;
 }
 
 .top {
@@ -22,4 +24,12 @@
     justify-content: center;
     align-items: center;
     padding-top: 200px;
+}
+
+.child-h2 {
+    font-weight: bold;
+}
+
+.child-p {
+    font-size: 20px;
 }
