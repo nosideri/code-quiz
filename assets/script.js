@@ -1,17 +1,18 @@
-const quizContainer = document.getElementById('quiz');
-const resultsContainer = document.getElementById('results');
-const submitButton = document.getElementById('submit');
+var quizContainer = document.getElementById('quiz');
+var resultsContainer = document.getElementById('results');
+var submitButton = document.getElementById('submit');
  
 var score = 0;
 
 var timerEl = document.getElementById('countdown');
+var startBtn = document.getElementById('start');
 
 function countdown() {
     var timeLeft = 75;
 
     var timeInterval = setInterval(function() {
         timeLeft--;
-        timerEl.textContent = timeLeft;
+        timerEl = timeLeft;
 
         if(timeLeft == 0) {
             clearInterval(timeInterval);
@@ -21,48 +22,63 @@ function countdown() {
     }, 1000);
 };
 
-var showResults = function() {
-
-};
-
-// after hitting submit, show the results
-submitButton.addEventListener('click', showResults);
+startBtn.onclick = countdown;
 
 // Questions Array
 var questions = [
     {question: 'Commonly used date types do NOT include:',
-    1: 'strings',
-    2: 'booleans',
-    3: 'alerts',
-    4: 'numbers',
-    correct: 3},
+    optionA: 'strings',
+    optionB: 'booleans',
+    optionC: 'alerts',
+    optionD: 'numbers',
+    //correct: optionC
+},
 
     {question: 'Arrays can be used to store:',
-    1: 'numbers and strings',
-    2: 'other arrays',
-    3: 'booleans',
-    4: 'all of the above',
-    correct: 4},
+    optionA: 'numbers and strings',
+    optionB: 'other arrays',
+    optionC: 'booleans',
+    optionD: 'all of the above',
+    //correct: 'optionD'
+},
 
     {question: 'The condition in an if/else statement is enclosed with:',
-    1: 'quotes',
-    2: 'square brackets',
-    3: 'curly brackets',
-    4: 'paranthesis',
-    correct: 3},
+    optionA: 'quotes',
+    optionB: 'square brackets',
+    optionC: 'curly brackets',
+    optionD: 'paranthesis',
+    //correct: 'optionC'
+},
 
     {question: 'A very useful tool used during development and debugging and for printing content to the debugger is:',
-    1: 'Javascript',
-    2: 'terminal bash',
-    3: 'for loops',
-    4: 'console.log',
-    correct: 4},
+    optionA: 'Javascript',
+    optionB: 'terminal bash',
+    optionC: 'for loops',
+    optionD: 'console.log',
+    //correct: 'optionD'
+},
 
     {question: 'If a string in JavaScript has any content at all, it will be considered:',
-    1: 'True',
-    2: 'False',
-    correct: 1}
+    optionA: 'True',
+    optionB: 'False',
+    //correct: 'optionA'
+}
 ];
+
+var lastQuestion = questions.length - 1;
+let runningQuestion = 0;
+
+function questionRenders() {
+    let q = questions[runningQuestion];
+
+    question.innerHTML = "<p>" + q.question + "</p>";
+
+    optionA.innerHTML = q.optionA;
+    optionB.innerHTML = q.optionB;
+    optionC.innerHTML = q.optionC;
+    optionD.innerHTML = q.optionD;
+
+};
 
 for (var i = 0; i < questions.length; i++) {
     var answer = correct(questions[i].question)
@@ -71,6 +87,24 @@ for (var i = 0; i < questions.length; i++) {
         alert('Correct!');
     } else {
         alert('Wrong!');
+        timeLeft--;
     }
-}
+};
 
+var showResults = function() {
+    console.log(score);
+};
+
+start.addEventListener("click", startQuiz);
+
+// after hitting submit, show the results
+submitButton.addEventListener('click', showResults);
+
+var startQuiz = function() {
+    start.style.display = "none";
+    renderQuestion();
+    renderCounter();
+    countdown();
+};
+
+startQuiz();

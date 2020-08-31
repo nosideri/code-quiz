@@ -1,3 +1,25 @@
+
+
 .button {
     color: purple
+}
+
+.top {
+    display: inline;
+}
+
+.view-scores {
+    color: blueviolet;
+    float: left;
+}
+
+.time {
+    float: right;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 200px;
 }
